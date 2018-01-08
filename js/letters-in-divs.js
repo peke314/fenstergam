@@ -1,14 +1,9 @@
 var input = document.getElementsByTagName("INPUT");
-input[0].addEventListener('keyup', lettersInDivs);
+input[0].addEventListener('input', lettersInDivs);
 
-function lettersInDivs(e){
-  if (e.keyCode == 13) {
-    var str = input[0].value;
-    var array = str.split("");
-    var div = document.getElementById("windows--letters");
-    var divs = div.children;
-    for (i = 0; i < divs.length; i++){
-        divs[i].innerHTML = array[i] || "";
-    }
-  }
+function lettersInDivs(){
+   var str = input[0].value;
+   var strMarkup = "<div>" + str.split("").join("</div><div>") + "</div>";
+   var divContainer = document.getElementById("windows--letters");
+   divContainer.innerHTML = strMarkup;
 }
